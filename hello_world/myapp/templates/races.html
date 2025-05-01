@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>F1 Race List</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h2>🏁 All F1 Races</h2>
+
+    <div class="mb-3">
+      <a href="{{ url_for('add_race') }}"
+         class="btn btn-primary">
+        + Add New Race
+      </a>
+
+      <a href="{{ url_for('report') }}"
+         class="btn btn-secondary ms-2">
+        🏎️ Generate Report
+      </a>
+    </div>
+
+    <ul class="list-group">
+      {% for r in races %}
+        <li class="list-group-item">
+          <strong>{{ r.title }}</strong> |
+          {{ r.start_time.strftime('%Y-%m-%d %H:%M') }}
+           – {{ r.end_time.strftime('%H:%M') }}
+          <div class="float-end">
+            <a href="{{ url_for('edit_race', id=r.race_id) }}"
+               class="btn btn-sm btn-warning">Edit</a>
+            <a href="{{ url_for('delete_race', id=r.race_id) }}"
+               class="btn btn-sm btn-danger">Delete</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Race</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <h2>➕ Add New F1 Race</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label>Race Title:</label>
+            <input type="text" name="title" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Start Time:</label>
+            <input type="datetime-local" name="start_time" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>End Time:</label>
+            <input type="datetime-local" name="end_time" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Team:</label>
+            <select name="team" class="form-select">
+              {% for team in teams %}
+                <option value="{{ team.team_id }}">{{ team.name }}</option>
+              {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Circuit:</label>
+            <select name="circuit" class="form-select">
+              {% for circuit in circuits %}
+                <option value="{{ circuit.circuit_id }}">{{ circuit.name }} ({{ circuit.location }})</option>
+              {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Driver:</label>
+            <select name="driver" class="form-select">
+              {% for driver in drivers %}
+                <option value="{{ driver.driver_id }}">{{ driver.name }} ({{ driver.country }})</option>
+              {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Add Race</button>
+    </form>
+</body>
+</html>
