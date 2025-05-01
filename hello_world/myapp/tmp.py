@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from models import db, Driver, Team, Circuit, Race, RaceDriver
+from myapp.models import db, Driver, Team, Circuit, Race, RaceDriver
 from datetime import date, datetime, time
 from sqlalchemy import text
 
